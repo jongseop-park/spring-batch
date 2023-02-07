@@ -1,4 +1,8 @@
 # Spring Boot Batch Guide
+
+### 스프링 배치 동작 구조
+<img src="https://velog.velcdn.com/images%2Fgkskaks1004%2Fpost%2Ffa42e4ee-a137-4be7-bc9e-73b3197588e1%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-07-22%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.42.02.png">
+
 - ### Job
     * 배치 처리 과정을 하나의 단위로 만들어 표현한 객체이다.
     * 하나의 Job객체는 여러 Step 인스턴스를 포함하는 컨테이너이다.
@@ -46,3 +50,7 @@
         O process(I item) throws Exception;
     }
 ```
+
+<img src="https://velog.velcdn.com/images%2Fgkskaks1004%2Fpost%2F05ed18af-a9c6-46a7-8df8-67d2bf91f675%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-07-22%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%204.00.27.png">
+
+### [참고](https://javabom.tistory.com/114)
