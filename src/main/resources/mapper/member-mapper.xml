@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.batch.mapper.MemberMapper">
+    <select id="findById" resultType="com.example.batch.domain.Member">
+        SELECT *
+        FROM member
+        WHERE id = #{id}
+    </select>
+
+    <select id="findAll" resultType="com.example.batch.domain.Member">
+        SELECT *
+        FROM member
+    </select>
+
+    <select id="nameCheck" resultType="String">
+        SELECT COUNT(name)
+        FROM member
+        WHERE name = #{name}
+    </select>
+
+    <insert id="save" parameterType="com.example.batch.domain.Member" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO member (name, age)
+        values (#{name}, #{age})
+    </insert>
+</mapper>

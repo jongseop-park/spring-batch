@@ -1,6 +1,7 @@
 package com.example.batch.scheduler;
 
 import com.example.batch.config.BatchConfig;
+import com.example.batch.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -23,24 +24,24 @@ import java.util.Calendar;
 @Component
 public class BatchScheduler {
 
-    private BatchConfig batchConfig;
-    private JobLauncher jobLauncher;
+    private final BatchConfig batchConfig;
+    private final JobLauncher jobLauncher;
+    private final MemberService memberService;
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "*/3 * * * * *")
     public void schedule1() {
 //        logger.info("schedule1 동작 중 : {}", Calendar.getInstance().getTime());
-        //JobParameters parameters = new JobParametersBuilder().addString("requestDate", LocalDateTime.now().toString()).toJobParameters();
-        JobParameters parameters = new JobParametersBuilder().toJobParameters();
+        JobParameters parameters = new JobParametersBuilder().addString("requestDate", LocalDateTime.now().toString()).toJobParameters();
+        //JobParameters parameters = new JobParametersBuilder().toJobParameters();
 
-        System.out.println(batchConfig);
-        System.out.println("=================");
-        try {
-            jobLauncher.run(batchConfig.myJob(), parameters);
-        } catch(JobInstanceAlreadyCompleteException | JobExecutionAlreadyRunningException | JobParametersInvalidException | JobRestartException e) {
-            log.error(e.getMessage());
-        }
+        memberService.findAll();
+//        try {
+//            jobLauncher.run(batchConfig.myJob(), parameters);
+//        } catch(JobInstanceAlreadyCompleteException | JobExecutionAlreadyRunningException | JobParametersInvalidException | JobRestartException e) {
+//            log.error(e.getMessage());
+//        }
 
 
     }
